@@ -11,6 +11,7 @@ from langchain_groq import ChatGroq
 from langchain_community.embeddings import HuggingFaceEmbeddings
 
 from langsmith import traceable
+
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 # from langchain_openai import OpenAIEmbeddings, ChatOpenAI
@@ -20,6 +21,7 @@ from langchain_core.runnables import RunnableParallel, RunnablePassthrough, Runn
 from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
+LANGSMITH_TRACING=False
 
 PDF_PATH = "islr.pdf"  # change to your file
 INDEX_ROOT = Path(".indices")
@@ -41,7 +43,7 @@ def split_documents(docs, chunk_size=1000, chunk_overlap=150):
 def build_vectorstore(splits, embed_model_name: str):
     # emb = OpenAIEmbeddings(model=embed_model_name)
     emb = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
     return FAISS.from_documents(splits, emb)
 
