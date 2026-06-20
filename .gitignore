@@ -6,4 +6,5 @@ venv/
 .venv/  
 
 #pdf files
-*.pdf
+# *.pdf
+islr.pdf
