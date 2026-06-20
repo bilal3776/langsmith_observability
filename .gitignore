@@ -4,3 +4,7 @@
 #virtual environment
 venv/
 .venv/  
+
+#pdf files
+# *.pdf
+islr.pdf
